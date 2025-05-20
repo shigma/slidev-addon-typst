@@ -1,0 +1,42 @@
+{
+  "name": "slidev-addon-typst",
+  "version": "1.0.0",
+  "description": "Typst addon for Slidev",
+  "homepage": "https://github.com/shigma/slidev-addon-typst",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shigma/slidev-addon-typst.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shigma/slidev-addon-typst/issues"
+  },
+  "files": [
+    "setup/*"
+  ],
+  "author": "Shigma <shigma10826@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "slidev example.md --open"
+  },
+  "keywords": [
+    "vuejs",
+    "slidev",
+    "typst",
+    "addon"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "slidev": ">=51.0.0"
+  },
+  "peerDependencies": {
+    "@slidev/client": "^51.7.1"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^51.7.1",
+    "@slidev/theme-seriph": "^0.25.0",
+    "@slidev/types": "^51.7.1"
+  },
+  "dependencies": {
+    "@myriaddreamin/typst-ts-node-compiler": "^0.6.0"
+  }
+}
