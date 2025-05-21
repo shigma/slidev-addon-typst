@@ -1,6 +1,6 @@
 {
   "name": "slidev-addon-typst",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Typst addon for Slidev",
   "homepage": "https://github.com/shigma/slidev-addon-typst",
   "repository": {

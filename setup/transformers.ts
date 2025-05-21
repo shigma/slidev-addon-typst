@@ -5,6 +5,7 @@ const compiler = NodeCompiler.create()
 
 interface TypstOptions {
   prelude?: string
+  inputs?: Record<string, string>
 }
 
 const DEFAULT_PRELUDE = `
@@ -31,6 +32,7 @@ export function renderTypst(code: string, info: string, options: TypstOptions) {
   code = DEFAULT_PRELUDE + '\n' + (options.prelude ?? '') + '\n' + code
   const result = compiler.tryHtml({
     mainFileContent: code,
+    inputs: options.inputs,
   })
   if (!result.result) {
     result.printErrors()

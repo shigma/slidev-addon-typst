@@ -31,3 +31,5 @@ Use `typst` code block to write typst code:
 $))
 ```
 ````
+
+See <https://slidev-addon-typst.vercel.app> for more examples.
