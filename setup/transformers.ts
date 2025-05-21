@@ -20,7 +20,14 @@ const DEFAULT_PRELUDE = `
   }
 }`
 
-export function renderTypst(code: string, options: TypstOptions) {
+const MAGIC_HUE = '-45.841deg'
+
+export function renderTypst(code: string, info: string, options: TypstOptions) {
+  const colorNames: string[] = []
+  code = code.replace(/var\(([\w-]+)\)/g, ($0, name: string) => {
+    colorNames.push(name)
+    return `color.hsl(${MAGIC_HUE}, 0%, ${colorNames.length}%)`
+  })
   code = DEFAULT_PRELUDE + '\n' + (options.prelude ?? '') + '\n' + code
   const result = compiler.tryHtml({
     mainFileContent: code,
@@ -30,7 +37,9 @@ export function renderTypst(code: string, options: TypstOptions) {
     result.printDiagnostics()
     return ''
   }
-  return result.result.body()
+  return result.result.body().replace(/"hsl\(-45\.841deg ([\d.]+)% ([\d.]+)%\)"/g, ($0, $1, num: string) => {
+    return `"var(--${colorNames[+num - 1]})"`
+  })
 }
 
 async function typstTransformer(ctx: MarkdownTransformContext) {
@@ -44,7 +53,7 @@ async function typstTransformer(ctx: MarkdownTransformContext) {
   )
   const typst = (ctx.options.data.headmatter.typst ??= {}) as TypstOptions
   const svgs = await Promise.all(snippets.map(async ([info, code]) => {
-    return renderTypst(code, typst)
+    return renderTypst(code, info, typst)
   }))
   let count = 0
   ctx.s.replace(

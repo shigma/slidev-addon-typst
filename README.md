@@ -23,6 +23,11 @@ Use `typst` code block to write typst code:
 
 ````md
 ```typst
-// This is a comment
+#import "@preview/fletcher:0.5.7" as fletcher: diagram, edge
+
+#html.frame(diagram($
+  G edge(f, ->) edge("d", pi, ->>) & im(f) \
+  G slash ker(f) edge("ur", tilde(f), "hook-->")
+$))
 ```
 ````

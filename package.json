@@ -1,6 +1,6 @@
 {
   "name": "slidev-addon-typst",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Typst addon for Slidev",
   "homepage": "https://github.com/shigma/slidev-addon-typst",
   "repository": {
@@ -23,14 +23,11 @@
     "vuejs",
     "slidev",
     "typst",
-    "addon"
+    "slidev-addon"
   ],
   "engines": {
     "node": ">=14.0.0",
     "slidev": ">=51.0.0"
-  },
-  "peerDependencies": {
-    "@slidev/client": "^51.7.1"
   },
   "devDependencies": {
     "@slidev/cli": "^51.7.1",
